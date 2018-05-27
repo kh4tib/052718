@@ -1,0 +1,58 @@
+// Global Styles
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+// Placeholders 
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+// Main Styles
+
+.main {
+    width: 100%;
+    height: 100%;
+    background: #161616;
+    @extend %flex-center;
+
+    &__content {
+        position: relative;
+    }
+
+    i {
+        position: absolute;
+        border: 2px solid salmon;
+        box-shadow: inset 2px 4px 16px rgba($color:#000, $alpha:.9);
+        animation: animation-i 4s linear forwards infinite;
+        
+        @keyframes animation-i {
+            0%, 100% {
+                border-radius: 0;
+            }
+
+            50% {
+                border-radius: 1rem;
+            }
+        }
+    }
+
+    @for $i from 1 through 8 {
+        :nth-child(#{$i}) {
+            width: $i*1rem;
+            height: $i*1rem;
+            animation-delay: $i*.25s;
+        }
+    }
+}
